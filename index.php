@@ -121,7 +121,7 @@
                                 $sql = "SELECT plate FROM plates ORDER BY RAND() LIMIT 3";
                                 $result = $conn->query($sql);
                                 while($plate = $result->fetch_assoc() ) {?>
-                                <option value="<?php echo $plate['id'] ?>"><?php echo $plate['plate'] ?></option>
+                                <option value="<?php echo $plate['plate'] ?>"><?php echo $plate['plate'] ?></option>
                             <?php }?>
                           </select>
                         </div>
