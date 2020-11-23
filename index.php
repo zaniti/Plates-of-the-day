@@ -118,10 +118,11 @@
                             <option selected disabled>Menu of the day</option>
                             <?php
                                 require('config.php');
-                                $sql = "SELECT plate FROM plates ORDER BY RAND() LIMIT 3";
+
+                                $sql = "SELECT * FROM todayplates";
                                 $result = $conn->query($sql);
                                 while($plate = $result->fetch_assoc() ) {?>
-                                <option value="<?php echo $plate['plate'] ?>"><?php echo $plate['plate'] ?></option>
+                                <option value="<?php echo $plate['todayplate'] ?>"><?php echo $plate['todayplate'] ?></option>
                             <?php }?>
                           </select>
                         </div>
@@ -139,7 +140,8 @@
         <?php
         if (isset($_POST['order'])){
 
-          echo "name : ".$_POST['name'].", email : ".$_POST['email'].", plate : ".$_POST['plate'].", message : ".$_POST['message'].".";
+
+          echo "name : ".$_POST['name'].", email : ".$_POST['email'].", plate : ".$_POST['plate'].", message : ".$_POST['message'].",".date("Y-m-d")."";
 
           require_once('phpmailer/PHPMailerAutoload.php');
 
@@ -158,6 +160,23 @@
           $mail->AddAddress('benzitianas@gmail.com');
 
           $mail->Send();
+
+
+
+          // $name = $_POST['name'];
+          //
+          // $email = $_POST['email'];
+          //
+          // $phone = $_POST['phone'];
+          //
+          // $message = $_POST['message'];
+          //
+          // $orderid = $_POST['plate'];
+          //
+          // $query = "INSERT into orders (user, email, phone,  message, order_id)
+          //           VALUES ('$name', '$email', '$phone', '$message','$orderid')";
+          //
+          // $res = mysqli_query($conn, $query);
 
 
 
